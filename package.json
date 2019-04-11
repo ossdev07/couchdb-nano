@@ -4,7 +4,7 @@
   "license": "Apache-2.0",
   "homepage": "http://github.com/apache/couchdb-nano",
   "repository": "http://github.com/apache/couchdb-nano",
-  "version": "7.1.1",
+  "version": "8.0.1",
   "author": "Apache CouchDB <dev@couchdb.apache.org> (http://couchdb.apache.org)",
   "keywords": [
     "couchdb",
@@ -21,7 +21,6 @@
     "cloudant-follow": "^0.18.0",
     "debug": "^2.2.0",
     "errs": "^0.3.2",
-    "lodash.isempty": "^4.4.0",
     "request": "^2.85.0"
   },
   "devDependencies": {
@@ -32,7 +31,8 @@
     "tape": "^4.6.2"
   },
   "scripts": {
-    "test": "standard; bash scripts/run_couchdb_on_travis.sh; npm run mocha; bash scripts/stop_couchdb_on_travis.sh",
+    "standard": "standard --fix",
+    "test": "standard && npm run mocha",
     "mocha": "NOCK_OFF=true istanbul cover tape tests/*/*/*.js",
     "unmocked": "NOCK_OFF=true tape tests/*/*/*.js",
     "mocked": "tape tests/*/*/*.js",

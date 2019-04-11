@@ -89,10 +89,13 @@ helpers.unit = function (method, error) {
             stub.db = helpers.couch + stub.db
           }
 
-	      if (method[1] === 'follow' || method[1] === 'followUpdates') {
-            assert.ok(typeof req.httpAgent, 'object');
-            delete req.httpAgent; // ignore 'httpAgent' in deep equal assert
+          if (method[1] === 'follow' || method[1] === 'followUpdates') {
+            assert.ok(typeof req.httpAgent, 'object')
+            delete req.httpAgent // ignore 'httpAgent' in deep equal assert
           }
+
+          // ignore qsStringifyOptions in object comparison
+          delete req.qsStringifyOptions
 
           assert.deepEqual(req, stub)
           assert.end()
